@@ -1,12 +1,12 @@
-import urllib2
- 
-def getPage():
-    url="http://www.google.com"
- 
-    req = urllib2.Request(url)
+# level 4
+num = "8022"
+p = re.compile('the next nothing is [0-9]+')
+p2 = re.compile('[0-9]+')
+for i in range(1000):
+    url="http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing="
+    req = urllib2.Request(url+num)
     response = urllib2.urlopen(req)
-    return response.read()
- 
-if __name__ == "__main__":
-    namesPage = getPage()
-    print namesPage
+    newnum = response.read()
+    tmp = p.search(newnum).group()
+    num = p2.search(tmp).group()
+    print newnum
